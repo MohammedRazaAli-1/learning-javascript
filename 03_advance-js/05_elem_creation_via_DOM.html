@@ -1,0 +1,46 @@
+<html>
+    <body></body>
+
+    <script>
+        let p = document.createElement("p");
+        p.setAttribute("id", "para");
+        p.innerText = "hello i am paragraph";
+        p.style.color = "red";
+        p.style.backgroundColor = "black";
+        p.style.fontSize = "30px";
+        p.style.border = "2px solid green";
+        document.body.appendChild(p);
+
+        let img = document.createElement("img");
+        img.setAttribute(
+            "src",
+            "https://rukminim2.flixcart.com/image/480/640/l01blow0/poster/y/z/n/medium-abstract-art-wallpaper-hd-wallpaper-on-art-paper-original-imagbx2qcjhygfu2.jpeg?q=90",
+        );
+        img.setAttribute("id", "myimg");
+        document.body.appendChild(img);
+
+        let ul = document.createElement("ul");
+        ul.setAttribute("id", "ul_list");
+
+        document.body.appendChild(ul);
+        ul.style.color = "purple";
+
+        li1 = document.createElement("li");
+        li1.setAttribute("id", "list1");
+        li1.style.color = "blue";
+
+        li2 = document.createElement("li");
+        li2.setAttribute("id", "list2");
+
+        li3 = document.createElement("li");
+        li3.setAttribute("id", "list3");
+
+        li1.innerText = "i am list 1 ";
+        li2.innerText = "i am list 2 ";
+        li3.innerText = "i am list 3 ";
+
+        ul.appendChild(li1);
+        ul.appendChild(li2);
+        ul.appendChild(li3);
+    </script>
+</html>

@@ -1,0 +1,61 @@
+<!-- <!doctype .html>
+<html>
+    <head>
+        <style></style>
+    </head>
+    <body>
+        <div class="mydiv"></div>
+        <div id="timer"></div>
+
+        <script>
+            let target_div = document.getElementsByClassName("mydiv")[0];
+            let timerDiv = document.getElementById("timer");
+
+            let name = prompt("Enter your name:");
+            let start_session = confirm("Can we start a session?");
+
+            let time = 10;
+            let intervalId;
+
+            if (start_session === true) {
+                target_div.innerText = "Your name is: " + name;
+
+                intervalId = setInterval(() => {
+                    timerDiv.innerText =
+                        "Session running: " + time + " seconds";
+                    time--;
+
+                    if (time < 0) {
+                        clearInterval(intervalId);
+                        timerDiv.innerText = "Session Expired";
+                        alert("Session expired");
+                        location.reload();
+                    }
+                }, 1000);
+            } else {
+                location.href = "https://www.google.com";
+            }
+        </script>
+    </body>
+</html>
+-->
+
+<!doctype .html>
+<html>
+    <head>
+        <title>hello</title>
+    </head>
+    <body>
+        <p id="para">hello i am paragrah</p>
+        <button id="button">i am button</button>
+        <ul id="list">
+            <li class="list_item">list 1</li>
+            <li class="list_item">list 2</li>
+            <li class="list_item">list 3</li>
+            <li class="list_item">list 4</li>
+        </ul>
+        <div id="div_parent">
+            <u id="div_child"> hello i am u </u>
+        </div>
+    </body>
+</html>

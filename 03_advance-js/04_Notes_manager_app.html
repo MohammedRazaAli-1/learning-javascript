@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Notes Manager</title>
+        <style>
+            #list_papa {
+                width: 250px;
+                background-color: cornflowerblue;
+                padding: 10px;
+                list-style: none;
+            }
+
+            li {
+                background: white;
+                margin: 5px 0;
+                padding: 5px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            button.delete {
+                background: red;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+
+    <body>
+        <input type="text" id="input" placeholder="Write your note..." />
+        <button id="btn">Add Note</button>
+
+        <p id="count">Total Notes: 0</p>
+
+        <ul id="list_papa"></ul>
+
+        <script>
+            const input = document.getElementById("input");
+            const btn = document.getElementById("btn");
+            const list = document.getElementById("list_papa");
+            const countText = document.getElementById("count");
+
+            function updateCount() {
+                countText.innerText = "Total Notes: " + list.children.length;
+            }
+
+            btn.onclick = function () {
+                if (input.value.trim() === "") {
+                    alert("Write some note...");
+                    return;
+                }
+
+                // create li
+                const li = document.createElement("li");
+                li.innerText = input.value;
+
+                // create delete button
+                const delBtn = document.createElement("button");
+                delBtn.innerText = "❌";
+                delBtn.className = "delete";
+
+                // delete logic
+                delBtn.onclick = function () {
+                    li.remove();
+                    updateCount();
+                };
+
+                li.appendChild(delBtn);
+                list.appendChild(li);
+
+                input.value = "";
+                updateCount();
+            };
+        </script>
+    </body>
+</html>

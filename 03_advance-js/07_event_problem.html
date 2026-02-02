@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Page Title</title>
+        <style>
+            #parent {
+                text-align: center;
+            }
+            #input {
+                font-size: 50px;
+                height: 70px;
+                width: 90%;
+                text-align: center;
+            }
+            #demo_text {
+                margin-top: 20px;
+            }
+            #para {
+                font-size: 30px;
+            }
+            #timer {
+                font-size: 30px;
+                font-weight: 700;
+                color: red;
+                height: 40px;
+                width: 200px;
+                border: 2px solid red;
+                border-radius: 10px;
+                text-align: center;
+            }
+            #show_typeing {
+                font-size: 28px;
+                border: 2px solid orangered;
+                background-color: darkseagreen;
+                height: 200px;
+                width: 90%;
+                text-wrap: wrap;
+                overflow-x: scroll;
+                margin-top: 20px;
+                padding: 20px;
+                margin-left: 3%;
+            }
+            #stop_msg {
+                color: red;
+                font-size: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="parent">
+            <input type="text" id="input" placeholder="start typing ...." />
+            <p id="stop_msg" hidden="true">
+                time is up ! you can not type anymore ...
+            </p>
+            <button hidden="true" onclick="seeResut()" id="result">
+                See Result..
+            </button>
+        </div>
+        <div id="demo_text">
+            <p id="para">
+                Old Man Willow watched the river flow, its surface mirroring the
+                sky's moods from bright blue to stormy grey, just as his own
+                ancient heart held memories of seasons past—the laughter of
+                children skipping stones, the quiet sorrow of lovers parting,
+                the fierce battles of floods—all washing by, leaving only silt
+                and stories in the constant, murmuring current, a reminder that
+                everything changes but the water, and the watching tree, remains
+                a steadfast witness to time's relentless, beautiful, and
+                sometimes sad passage.
+            </p>
+        </div>
+        <div id="timer_parent">
+            <div id="timer"></div>
+        </div>
+
+        <div id="show_typeing"></div>
+
+        <script>
+            let type = document.getElementById("input");
+            let time = 10;
+            let timerElement = document.getElementById("timer");
+            let stop_msg = document.getElementById("stop_msg");
+            let show_typing = document.getElementById("show_typeing");
+            let para = document.getElementById("para");
+            let result = document.getElementById("result");
+
+            let interval = setInterval(() => {
+                let minutes = Math.floor(time / 60);
+                let seconds = time % 60;
+
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                timerElement.innerText = minutes + ":" + seconds;
+
+                time--;
+
+                if (time < 0) {
+                    clearInterval(interval);
+                    timerElement.innerText = "Time Up!";
+                    type.disabled = true;
+                    stop_msg.hidden = false;
+                    result.hidden = false;
+                }
+            }, 1000);
+
+            type.addEventListener("input", function (e) {
+                show_typing.innerText = e.target.value;
+            });
+
+            function seeResut() {
+                if (show_typing.innerText.trim() == para.innerText.trim()) {
+                    alert("you typed correct and complete . [your score 100%]");
+                } else if (show_typing.innerText.trim() == "") {
+                    alert("you did not typed anything . [your score 0%]");
+                } else {
+                    alert("you tried well. do more practice [your score 51%]");
+                }
+            }
+        </script>
+    </body>
+</html>
